@@ -1,12 +1,9 @@
 #include <jni.h>
-#include <string>
 
-extern "C" JNIEXPORT jstring
+jint number = 1;
 
-JNICALL
-Java_coca_webster_com_coca_MainActivity_stringFromJNI(
-        JNIEnv *env,
-        jobject /* this */) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
+extern "C" JNIEXPORT jint
+JNICALL Java_coca_webster_com_coca_MainActivity_incrementNum(JNIEnv *env, jobject obj) {
+    return number++;  //or anything that can be cast to a jint
 }
+
